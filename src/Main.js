@@ -8,7 +8,7 @@ import Telegram from './telegram/Telegram.js';
 
 import fetch from 'node-fetch';
 
-// Test
+
 let Server = {
 
     data: {},
