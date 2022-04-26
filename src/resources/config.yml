@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 token:
   telegram: '' # Telegram bot token
   discord: '' # Discord bot token
@@ -7,14 +6,4 @@ token:
     password: ''
 
 quakeDataAPI: 'https://data.bmkg.go.id/DataMKG/TEWS/autogempa.json'
-=======
-token:
-  telegram: '' # Telegram bot token
-  discord: '' # Discord bot token
-  instagram: # Instagram account
-    username: ''
-    password: ''
-
-quakeDataAPI: 'https://data.bmkg.go.id/DataMKG/TEWS/autogempa.json'
->>>>>>> 73634b6 (main)
 syncQuakeData: 30 #in second, '0' for brute syncronize | 39 second for performance
