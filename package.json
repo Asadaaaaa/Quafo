@@ -1,0 +1,22 @@
+{
+  "name": "bmkg-notificator",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "src/Main.js",
+  "scripts": {
+    "start": "node ."
+  },
+  "keywords": [],
+  "author": "Asada",
+  "license": "ISC",
+  "dependencies": {
+    "fs-extra": "^10.1.0",
+    "grammy": "^1.7.1",
+    "js-yaml": "^4.1.0",
+    "mongodb": "^4.4.1",
+    "node-fetch": "^3.2.3",
+    "nodemon": "^2.0.15",
+    "telegraf": "^4.7.0"
+  }
+}
