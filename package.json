@@ -6,7 +6,7 @@
   "type": "module",
   "main": "src/Main.js",
   "scripts": {
-    "start": "node ."
+    "start": "nodemon --watch src"
   },
   "keywords": [],
   "author": "Asada",
