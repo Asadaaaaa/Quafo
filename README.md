@@ -3,7 +3,7 @@
 <div align="center">
 	<p>
 		Geboom is an earthquake warning program using official data from the BMKG in real time.<br>
-		(Data taken from the official website [https://data.bmkg.go.id/gempabumi/](BMKG))
+		(Data taken from the official website [Badan Meteorologi, Klimatologi, dan Geofisika](https://data.bmkg.go.id/gempabumi/)
 	</p>
 	<a href="https://t.me/ItsMeAsada">
         	<img src="https://img.shields.io/badge/Chat-Telegram-blue" alt="telegram">
@@ -14,24 +14,19 @@
 </div>
     <br><br>
     <h3>Geboom available various platforms such as:</h3>
-    🔹 Telegram.
+    🔹 Telegram ([Click Here](https://t.me/GeboomBot))
     <br>
-    🔹 Registration & Login Page
+    🔹 Instagram (Coming Soon)
     <br>
-    🔹 Movie, City, Cinema, Date, Time, Ammount of Ticet, Seat and Payment selection
+    🔹 Twitter (Coming Soon)
     <br>
-    🔹 Play trailers 
+    🔹 Whatsapp (Coming Soon) 
     <br>
-    🔹 Cinema Direction Map
-    <br>
-    🔹 Send Ticket to Email
-    <br>
+    🔹 Discord (Coming Soon)
 
 <div align="center">
-	<h2>How to setup?</h2>
+	<h2>Information</h2>
 </div>
 
- - <h3>Step Installation:</h3>
- 1. Download the latest version on the [Release](https://github.com/Asadaaaaa/UKTix/releases/tag/v3.1) page
- 2. Extract the downloaded file
- 3. Run UKTix.exe
+ - <h3>Credits</h3>
+This is an open source program, freely to use, but please include my github name if using this program.
