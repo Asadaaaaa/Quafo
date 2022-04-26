@@ -14,7 +14,7 @@
 </div>
     <br><br>
     <h3>Geboom available various platforms such as:</h3>
-    🔹 Telegram <a href="https://t.me/GeboomBot">(Click Here)</a>
+    🔹 Telegram (<a href="https://t.me/GeboomBot">Click Here</a>)
     <br>
     🔹 Instagram (Coming Soon)
     <br>
