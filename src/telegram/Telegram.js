@@ -61,7 +61,9 @@ class Telegram {
                             '    Geboom adalah program peringatan siaga bencana gempa menggunakan data resmi dari BMKG secara Realtime. Geboom tersedia di berbagai platform seperti:\n' +
                             '\n' +
                             ' • Telegram: https://t.me/GeboomBot\n' +
-                            ' • Instagram: (Segera Hadir)\n' +
+                            ' • Instagram: https://instagram.com/geboom.id\n' +
+                            ' • Twitter: (Segera Hadir)\n' +
+                            ' • WhatsApp: (Segera Hadir)\n' +
                             ' • Discord: (Segera Hadir)\n' +
                             '\n' +
                             'Author: https://linktr.ee/mikailasada\n'+
@@ -217,7 +219,9 @@ class Telegram {
                         '    Geboom adalah program peringatan siaga bencana gempa menggunakan data resmi dari BMKG secara Realtime. Geboom tersedia di berbagai platform seperti:\n' +
                         '\n' +
                         ' • Telegram: https://t.me/GeboomBot\n' +
-                        ' • Instagram: (Segera Hadir)\n' +
+                        ' • Instagram: https://instagram.com/geboom.id\n' +
+                        ' • Twitter: (Segera Hadir)\n' +
+                        ' • WhatsApp: (Segera Hadir)\n' +
                         ' • Discord: (Segera Hadir)\n' +
                         '\n' +
                         'Author: https://linktr.ee/mikailasada\n'+
@@ -309,7 +313,7 @@ class Telegram {
                 
                 }).then(() => {
 
-                    this.server.sendLogs('(Telegram) Successfully Sent broadcast to ' + value);
+                    this.server.sendLogs('(Telegram) Successfully sent broadcast to ' + value);
                 
                 });
             }

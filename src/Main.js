@@ -5,10 +5,11 @@ import saveFileData from './utils/SaveFileData.js';
 import Sleep from './algorithms/Sleep.js'
 
 import Telegram from './telegram/Telegram.js';
+import Instagram from './instagram/Instagram.js';
 
 import fetch from 'node-fetch';
 
-// Test
+
 let Server = {
 
     data: {},
@@ -42,8 +43,9 @@ const main = async () => {
     Server.quake.latestQuake = await getFileData('quake_data/latest.json', 'JSON');
     Server.quake.historyQuake = await getFileData('quake_data/history.json', 'JSON');
 
+    await runApp();
     quakeDataUpdater();
-    runApp();
+    
 
     return;
 }
@@ -111,12 +113,27 @@ const runApp = async () => {
 
     }
 
+    if(Server.data.config.token.instagram.username !== '' && Server.data.config.token.instagram.password !== '') {
+
+        Server.instagram = {
+
+            App: new Instagram(Server),
+            
+            data: {}
+        
+        }
+
+        await Server.instagram.App.run();
+
+    }
+
     return;
 }
 
 const broadcaster = async (latest) => {
 
     Server.telegram.App.broadCastQuake(latest);
+    Server.instagram.App.broadCastQuake(latest);
 
     return;
 }
