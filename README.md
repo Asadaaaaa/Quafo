@@ -1,5 +1,5 @@
 <div align="center">
-	<img src="https://github.com/Asadaaaaa/Geboom/blob/main/Geboom.png?raw=true" alt="Your image url" width="100" height="100">
+	<img src="https://github.com/Asadaaaaa/Geboom/blob/main/Geboom.png?raw=true" alt="Your image url" width="200" height="200">
 	<h1>Geboom</h1>
 </div>
 
