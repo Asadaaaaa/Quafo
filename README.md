@@ -1,8 +1,10 @@
-<h1 align="center">Geboom</h1>
+<div align="center">
+	<img src="https://github.com/Asadaaaaa/Geboom/blob/main/Geboom.png?raw=true" alt="Your image url" width="200" height="200">
+</div>
 
 <div align="center">
 	<p>
-		Geboom is an earthquake warning program using official data from the BMKG in real time.<br>
+		Geboom is an Indonesia earthquake warning program using official data from the BMKG in real time.<br>
 		(Data taken from the official website <a href="https://data.bmkg.go.id/gempabumi/">Badan Meteorologi, Klimatologi, dan Geofisika<a/>)
 	</p>
 	<a href="https://t.me/ItsMeAsada">
