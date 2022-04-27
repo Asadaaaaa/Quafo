@@ -4,7 +4,7 @@
 
 <div align="center">
 	<p>
-		Geboom is an earthquake warning program using official data from the BMKG in real time.<br>
+		Geboom is an Indonesia earthquake warning program using official data from the BMKG in real time.<br>
 		(Data taken from the official website <a href="https://data.bmkg.go.id/gempabumi/">Badan Meteorologi, Klimatologi, dan Geofisika<a/>)
 	</p>
 	<a href="https://t.me/ItsMeAsada">
