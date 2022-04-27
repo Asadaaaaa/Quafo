@@ -18,7 +18,7 @@
     <h3>Geboom available various platforms such as:</h3>
     🔹 Telegram (<a href="https://t.me/GeboomBot">Click Here</a>)
     <br>
-    🔹 Instagram (Coming Soon)
+    🔹 Instagram (<a href="https://www.instagram.com/geboom.id">Click Here</a>)
     <br>
     🔹 Twitter (Coming Soon)
     <br>
