@@ -64,7 +64,7 @@ const quakeDataUpdater = async () => {
 
         } catch(err) {
 
-            Server.sendLogs('Error Fetching ' + Server.data.config.quakeDataAPI);
+            // Server.sendLogs('Error Fetching ' + Server.data.config.quakeDataAPI);
 
             await Sleep.sleep(5);
 

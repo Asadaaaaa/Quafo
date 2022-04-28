@@ -53,22 +53,22 @@ class Telegram {
                         
                         messageData.reply(
                             'Selamat Datang @' + username + ' 👋\n' +
+                            '\n' +
                             'Username kamu telah terdaftar di Geboom !, kamu akan menerima peringatan gempa secara berkala\n' + 
                             '\n' +
                             '\n' +
-                            '*Apa itu Geboom*❔\n' +
-                            '    Geboom adalah program peringatan siaga bencana gempa menggunakan data resmi dari BMKG secara Realtime. Geboom tersedia di berbagai platform seperti:\n' +
+                            '<u><b>Apa itu Geboom</b></u>❔\n' +
                             '\n' +
-                            ' • Telegram: https://t.me/GeboomBot\n' +
-                            ' • Instagram: https://instagram.com/geboom.id\n' +
-                            ' • Twitter: https://twitter.com/Geboom_id\n' +
-                            ' • WhatsApp: (Segera Hadir)\n' +
-                            ' • Discord: (Segera Hadir)\n' +
+                            '    Geboom adalah program peringatan siaga bencana gempa menggunakan data resmi dari BMKG secara Realtime. Geboom tersedia di berbagai platform seperti:\n' +
+                            '   • <a href="https://t.me/GeboomBot">Telegram</a>\n' +
+                            '   • <a href="https://www.instagram.com/geboom.id">Instagram</a>\n' +
+                            '   • <a href="https://twitter.com/Geboom_id">Twitter</a>\n' +
+                            '\n' +
                             '\n' +
                             'Author: https://linktr.ee/mikailasada\n'+
                             '\n' +
                             'ketik /help untuk melihat daftar perintah'
-                        , {parse_mode: 'Markdown', disable_web_page_preview: true});
+                        , {parse_mode: 'HTML', disable_web_page_preview: true});
 
                         break;
                     } else {
@@ -85,14 +85,14 @@ class Telegram {
                     messageData.reply(
                         'Kamu dapat memerintahkan bot dengan menggunakan kode perintah dibawah ini:\n' +
                         '\n' +
-                        '/start - Registrasi User\n' +
-                        '/stop - Hapus User\n' +
+                        '/start - Registrasi UserID\n' +
+                        '/stop - Hapus UserID\n' +
                         '\n' +
                         '/warn - Toggle notifikasi peringatan otomatis\n' +
                         '/latest - Melihat gempa terkini\n' +
                         '/history [parameter 2-15] - Melihat beberapa gempa terakhir\n' +
                         '\n' +
-                        '/infoGeboom'
+                        '/infoGeboom - Informasi tentang Geboom'
                     );
                     
                     break;
@@ -210,19 +210,18 @@ class Telegram {
                 case '/infoGeboom': {
 
                     messageData.reply(
-                        '*Apa itu Geboom*❔\n' +
-                        '    Geboom adalah program peringatan siaga bencana gempa menggunakan data resmi dari BMKG secara Realtime. Geboom tersedia di berbagai platform seperti:\n' +
+                        '<u><b>Apa itu Geboom</b></u>❔\n' +
                         '\n' +
-                        ' • Telegram: https://t.me/GeboomBot\n' +
-                        ' • Instagram: https://instagram.com/geboom.id\n' +
-                        ' • Twitter: https://twitter.com/Geboom_id\n' +
-                        ' • WhatsApp: (Segera Hadir)\n' +
-                        ' • Discord: (Segera Hadir)\n' +
+                        '    Geboom adalah program peringatan siaga bencana gempa menggunakan data resmi dari BMKG secara Realtime. Geboom tersedia di berbagai platform seperti:\n' +
+                        '   • <a href="https://t.me/GeboomBot">Telegram</a>\n' +
+                        '   • <a href="https://www.instagram.com/geboom.id">Instagram</a>\n' +
+                        '   • <a href="https://twitter.com/Geboom_id">Twitter</a>\n' +
+                        '\n' +
                         '\n' +
                         'Author: https://linktr.ee/mikailasada\n'+
                         '\n' +
                         'ketik /help untuk melihat daftar perintah'
-                    , {parse_mode: 'Markdown', disable_web_page_preview: true});
+                    , {parse_mode: 'HTML', disable_web_page_preview: true});
 
                     break;
                 }
