@@ -9,7 +9,7 @@ class Telegram {
     constructor(server) {
         
         this.server = server;
-        this.client = new Telegraf(this.server.data.config.token.telegram);
+        this.client = new Telegraf(this.server.data.config.apiAuth.telegram);
 
     }
 
@@ -149,12 +149,10 @@ class Telegram {
                     '*Details:*\n' +
                     'Tanggal: ' + latestQuake.Tanggal + '\n' +
                     'Jam: ' + latestQuake.Jam + '\n' + 
-                    'Koordinat: ' + latestQuake.Coordinates + '\n' +
                     'Lintang: ' + latestQuake.Lintang + '\n' + 
                     'Bujur: ' + latestQuake.Bujur + '\n' +
                     'Magnitude: ' + latestQuake.Magnitude + '\n' +
                     'Kedalaman: ' + latestQuake.Kedalaman + '\n' +
-                    'Lintang: ' + latestQuake.Lintang + '\n' +
                     '\n' + 
                     latestQuake.Potensi;
 
@@ -196,12 +194,10 @@ class Telegram {
                         '*Details:*\n' +
                         'Tanggal: ' + curQuakeData.Tanggal + '\n' +
                         'Jam: ' + curQuakeData.Jam + '\n' + 
-                        'Koordinat: ' + curQuakeData.Coordinates + '\n' +
                         'Lintang: ' + curQuakeData.Lintang + '\n' + 
                         'Bujur: ' + curQuakeData.Bujur + '\n' +
                         'Magnitude: ' + curQuakeData.Magnitude + '\n' +
                         'Kedalaman: ' + curQuakeData.Kedalaman + '\n' +
-                        'Lintang: ' + curQuakeData.Lintang + '\n' +
                         '\n' + 
                         curQuakeData.Potensi;
 
@@ -292,12 +288,10 @@ class Telegram {
         '*Details:*\n' +
         'Tanggal: ' + latestQuake.Tanggal + '\n' +
         'Jam: ' + latestQuake.Jam + '\n' + 
-        'Koordinat: ' + latestQuake.Coordinates + '\n' +
         'Lintang: ' + latestQuake.Lintang + '\n' + 
         'Bujur: ' + latestQuake.Bujur + '\n' +
         'Magnitude: ' + latestQuake.Magnitude + '\n' +
         'Kedalaman: ' + latestQuake.Kedalaman + '\n' +
-        'Lintang: ' + latestQuake.Lintang + '\n' +
         '\n' + 
         latestQuake.Potensi;
 

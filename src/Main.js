@@ -6,6 +6,7 @@ import Sleep from './algorithms/Sleep.js'
 
 import Telegram from './telegram/Telegram.js';
 import Instagram from './instagram/Instagram.js';
+import Twitter from './twitter/Twitter.js';
 
 import fetch from 'node-fetch';
 
@@ -98,8 +99,10 @@ const quakeDataUpdater = async () => {
 }
 
 const runApp = async () => {
+
+    const api = Server.data.config.apiAuth;
     
-    if(Server.data.config.token.telegram !== '') {
+    if(api.telegram !== '') {
         
         Server.telegram = {
 
@@ -113,7 +116,7 @@ const runApp = async () => {
 
     }
 
-    if(Server.data.config.token.instagram.username !== '' && Server.data.config.token.instagram.password !== '') {
+    if(api.instagram.username !== '' && api.instagram.password !== '') {
 
         Server.instagram = {
 
@@ -127,6 +130,18 @@ const runApp = async () => {
 
     }
 
+    if(api.twitter.appKey !== '' && api.twitter.appSecret !== '' && api.twitter.accessToken !== '' && api.twitter.accessSecret !== '') {
+
+        Server.twitter = {
+
+            App: new Twitter(Server),
+            
+            data: {}
+        
+        }
+
+    }
+
     return;
 }
 
@@ -134,6 +149,7 @@ const broadcaster = async (latest) => {
 
     Server.telegram.App.broadCastQuake(latest);
     Server.instagram.App.broadCastQuake(latest);
+    Server.twitter.App.broadCastQuake(latest);
 
     return;
 }

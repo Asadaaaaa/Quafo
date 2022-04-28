@@ -2,7 +2,7 @@ import saveFileData from '../utils/SaveFileData.js';
 import getFileData from '../utils/GetFileData.js';
 
 import instagram from 'instagram-web-api';
-// const Instagram = require('instagram-web-api');
+
 import FileCookieStore from 'tough-cookie-filestore2';
 import FS from 'fs-extra';
 
@@ -19,14 +19,14 @@ class Instagram {
         await this.loadData();
 
         let cookieStore = new FileCookieStore('./server_data/instagram_data/cookies.json');
-        let username = this.server.data.config.token.instagram.username;
-        let password = this.server.data.config.token.instagram.password;
+        let username = this.server.data.config.apiAuth.instagram.username;
+        let password = this.server.data.config.apiAuth.instagram.password;
 
         this.client = new instagram({username, password, cookieStore});
 
         await this.client.login().then(() => {
 
-            this.server.sendLogs('Instagram Automation started | Login as ' + this.server.data.config.token.instagram.username);
+            this.server.sendLogs('Instagram Automation started | Login as ' + username);
 
         }).catch((err) => {
 
@@ -63,12 +63,10 @@ class Instagram {
         'Details:\n' +
         'Tanggal: ' + latestQuake.Tanggal + '\n' +
         'Jam: ' + latestQuake.Jam + '\n' + 
-        'Koordinat: ' + latestQuake.Coordinates + '\n' +
         'Lintang: ' + latestQuake.Lintang + '\n' + 
         'Bujur: ' + latestQuake.Bujur + '\n' +
         'Magnitude: ' + latestQuake.Magnitude + '\n' +
         'Kedalaman: ' + latestQuake.Kedalaman + '\n' +
-        'Lintang: ' + latestQuake.Lintang + '\n' +
         '\n' + 
         latestQuake.Potensi;
 
