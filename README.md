@@ -30,6 +30,6 @@
 	<h2>Information</h2>
 </div>
 
- - <h3>Credits</h3>
-Author: https://linktr.ee/mikailasada
-This is an open source program, freely to use, but please include my github name if using this program.
+<h3>Credits</h3>
+- Author: https://linktr.ee/mikailasada
+- Watermark: This is an open source program, freely to use, but please include my github name if using this program.
