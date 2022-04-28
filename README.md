@@ -20,7 +20,7 @@
     <br>
     🔹 Instagram (<a href="https://www.instagram.com/geboom.id">Click Here</a>)
     <br>
-    🔹 Twitter (Coming Soon)
+    🔹 Twitter (<a href="https://twitter.com/Geboom_id">Click Here</a>)
     <br>
     🔹 Whatsapp (Coming Soon) 
     <br>
@@ -30,5 +30,6 @@
 	<h2>Information</h2>
 </div>
 
- - <h3>Credits</h3>
-This is an open source program, freely to use, but please include my github name if using this program.
+<h3>Credits</h3>
+- Author: https://linktr.ee/mikailasada<br>
+- Watermark: This is an open source program, freely to use, but please include my github name if using this program.
