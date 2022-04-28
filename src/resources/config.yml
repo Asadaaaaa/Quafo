@@ -1,9 +1,13 @@
-token:
+apiAuth:
   telegram: '' # Telegram bot token
-  discord: '' # Discord bot token
+  twitter: # Twitter bot token
+    appKey: ''
+    appSecret: ''
+    accessToken: ''
+    accessSecret: ''
   instagram: # Instagram account
     username: ''
     password: ''
 
 quakeDataAPI: 'https://data.bmkg.go.id/DataMKG/TEWS/autogempa.json'
-syncQuakeData: 30 #in second, '0' for brute syncronize | 39 second for performance
+syncQuakeData: 30 #in second, '0' for brute syncronize | 30 second for performance

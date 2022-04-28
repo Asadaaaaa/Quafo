@@ -20,13 +20,14 @@ class Telegram {
         this.client.on('message', async (messageData) => {
 
             let messageTxt = messageData.message.text.split(' ');
+            let userChatId = messageData.chat.id;
             let username = messageData.chat.username;
 
             this.server.sendLogs('(Telegram) ' + username + ' Sent a message: ' + messageTxt)
 
-            if(messageTxt[0] !== '/start' && this.server.telegram.data.users[username] == undefined) {
+            if(messageTxt[0] !== '/start' && this.server.telegram.data.users[userChatId] == undefined) {
 
-                messageData.reply('❗Username kamu belum terdaftar, harap daftar dengan ketik /start.');
+                messageData.reply('❗UserID kamu belum terdaftar, harap daftar dengan ketik /start.');
 
                 return;
             }
@@ -35,13 +36,11 @@ class Telegram {
 
                 case '/start': {
 
-                    if(this.server.telegram.data.users[username] == undefined) {
+                    if(this.server.telegram.data.users[userChatId] == undefined) {
 
                         Object.assign(this.server.telegram.data.users, {
 
-                            [username]: {
-
-                                userID: messageData.chat.id,
+                            [userChatId]: {
 
                                 warn: true
                             
@@ -62,7 +61,7 @@ class Telegram {
                             '\n' +
                             ' • Telegram: https://t.me/GeboomBot\n' +
                             ' • Instagram: https://instagram.com/geboom.id\n' +
-                            ' • Twitter: (Segera Hadir)\n' +
+                            ' • Twitter: https://twitter.com/Geboom_id\n' +
                             ' • WhatsApp: (Segera Hadir)\n' +
                             ' • Discord: (Segera Hadir)\n' +
                             '\n' +
@@ -101,7 +100,7 @@ class Telegram {
 
                 case '/stop': {
 
-                    delete this.server.telegram.data.users[username];
+                    delete this.server.telegram.data.users[userChatId];
 
                     await saveFileData({users: this.server.telegram.data.users}, 'telegram_data/users_data.json', 'JSON');
                     
@@ -114,9 +113,9 @@ class Telegram {
 
                 case '/warn': {
 
-                    if(this.server.telegram.data.users[username].warn === true) {
+                    if(this.server.telegram.data.users[userChatId].warn === true) {
 
-                        this.server.telegram.data.users[username].warn = false;
+                        this.server.telegram.data.users[userChatId].warn = false;
 
                         await saveFileData({users: this.server.telegram.data.users}, 'telegram_data/users_data.json', 'JSON');
 
@@ -124,9 +123,9 @@ class Telegram {
                             '❕Notifikasi peringatan gempa otomatis telah dimatikan.'
                         );
                         
-                    } else if(this.server.telegram.data.users[username].warn === false) {
+                    } else if(this.server.telegram.data.users[userChatId].warn === false) {
 
-                        this.server.telegram.data.users[username].warn = true;
+                        this.server.telegram.data.users[userChatId].warn = true;
 
                         await saveFileData({users: this.server.telegram.data.users}, 'telegram_data/users_data.json', 'JSON');
 
@@ -216,7 +215,7 @@ class Telegram {
                         '\n' +
                         ' • Telegram: https://t.me/GeboomBot\n' +
                         ' • Instagram: https://instagram.com/geboom.id\n' +
-                        ' • Twitter: (Segera Hadir)\n' +
+                        ' • Twitter: https://twitter.com/Geboom_id\n' +
                         ' • WhatsApp: (Segera Hadir)\n' +
                         ' • Discord: (Segera Hadir)\n' +
                         '\n' +
@@ -299,16 +298,26 @@ class Telegram {
 
             if(this.server.telegram.data.users[value].warn === true) {
                 
-                this.client.telegram.sendPhoto(this.server.telegram.data.users[value].userID, 'https://data.bmkg.go.id/DataMKG/TEWS/' + latestQuake.Shakemap, {
+                this.client.telegram.sendPhoto(value, 'https://data.bmkg.go.id/DataMKG/TEWS/' + latestQuake.Shakemap, {
                 
-                caption: sendMessageText, 
+                    caption: sendMessageText, 
                 
                     parse_mode: 'Markdown'
                 
-                }).then(() => {
+                }).then(async () => {
 
-                    this.server.sendLogs('(Telegram) Successfully sent broadcast to ' + value);
+                    let chatData = await this.client.telegram.getChat(value);
+                    
+                    this.server.sendLogs('(Telegram) Successfully sent broadcast to @' + chatData.username);
                 
+                }).catch(async (err) => {
+
+                    let chatData = await this.client.telegram.getChat(value);
+
+                    if(err.response.error_code == 403) {
+                        console.log('(Telegram) Failed sending a broadcast to @' + chatData.username + ' | Blocked Contact');
+                    }
+                    
                 });
             }
 

@@ -1,11 +1,4 @@
-
-import saveFileData from '../utils/SaveFileData.js';
-import getFileData from '../utils/GetFileData.js';
-
 import { TwitterApi } from "twitter-api-v2";
-
-import FileCookieStore from 'tough-cookie-filestore2';
-import FS from 'fs-extra';
 
 class Twitter {
 
@@ -32,7 +25,7 @@ class Twitter {
         'Kedalaman ' + latestQuake.Kedalaman + ' | ' +
         latestQuake.Potensi + ' | https://data.bmkg.go.id/DataMKG/TEWS/' + latestQuake.Shakemap;
 
-        const photo = 'https://data.bmkg.go.id/DataMKG/TEWS/' + latestQuake.Shakemap;
+        // const photo = 'https://data.bmkg.go.id/DataMKG/TEWS/' + latestQuake.Shakemap;
 
         await this.rwClient.v2.tweet({text: setStatus, }).then(() => {
 

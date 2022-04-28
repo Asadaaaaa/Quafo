@@ -1,5 +1,4 @@
 import saveFileData from '../utils/SaveFileData.js';
-import getFileData from '../utils/GetFileData.js';
 
 import instagram from 'instagram-web-api';
 
@@ -68,7 +67,7 @@ class Instagram {
         'Magnitude: ' + latestQuake.Magnitude + '\n' +
         'Kedalaman: ' + latestQuake.Kedalaman + '\n' +
         '\n' + 
-        latestQuake.Potensi;
+        latestQuake.Potensi + '\n\n#gempa #gempaindonesia #gempaterkini #indonesia #earthquake #news #berita';
 
         const photo = 'https://data.bmkg.go.id/DataMKG/TEWS/' + latestQuake.Shakemap;
         
