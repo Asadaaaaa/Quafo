@@ -31,5 +31,5 @@
 </div>
 
 <h3>Credits</h3>
-- Author: https://linktr.ee/mikailasada
+- Author: https://linktr.ee/mikailasada<br>
 - Watermark: This is an open source program, freely to use, but please include my github name if using this program.
