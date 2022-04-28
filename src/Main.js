@@ -148,8 +148,8 @@ const runApp = async () => {
 const broadcaster = async (latest) => {
 
     Server.telegram.App.broadCastQuake(latest);
-    // Server.instagram.App.broadCastQuake(latest);
-    // Server.twitter.App.broadCastQuake(latest);
+    Server.instagram.App.broadCastQuake(latest);
+    Server.twitter.App.broadCastQuake(latest);
 
     return;
 }
