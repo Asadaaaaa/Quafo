@@ -29,7 +29,7 @@ let Server = {
 
     sendLogs: (logText) => {
 
-        console.log('\n\n' + Server.getCurTime() + ': ' + logText);
+        console.log(Server.getCurTime() + ' ' + logText);
 
     }
 
@@ -37,6 +37,8 @@ let Server = {
 
 
 const main = async () => {
+
+    console.log("Starting...");
 
     await resourceLoader();
 
@@ -60,11 +62,11 @@ const quakeDataUpdater = async () => {
 
         try{
 
-            respondBMKG_API = await fetch(Server.data.config.quakeDataAPI);
+            respondBMKG_API = await fetch(Server.data.config['quake-data'].api);
 
         } catch(err) {
 
-            // Server.sendLogs('Error Fetching ' + Server.data.config.quakeDataAPI);
+            if(Server.data.config['quake-data']['error-logs']) Server.sendLogs('(Quake API) \x1b[91mERROR:\x1b[0m Fetching API'); 
 
             await Sleep.sleep(5);
 
@@ -72,12 +74,10 @@ const quakeDataUpdater = async () => {
         }
         
         let bmkgLatestQuake = (await respondBMKG_API.json()).Infogempa.gempa;
-        
-        // console.log(bmkgLatestQuake);
 
         if(JSON.stringify(Server.quake.latestQuake) !== JSON.stringify(bmkgLatestQuake)) {
 
-            Server.sendLogs('Terjadi Gempa');
+            Server.sendLogs('(Quake API) New Quake Data Detected! Sending a Broadcast...');
 
             Server.quake.latestQuake = bmkgLatestQuake;
             Server.quake.historyQuake.data.unshift(bmkgLatestQuake);
@@ -85,75 +85,127 @@ const quakeDataUpdater = async () => {
             await saveFileData(Server.quake.latestQuake, 'quake_data/latest.json', 'JSON');
             await saveFileData(Server.quake.historyQuake, 'quake_data/history.json', 'JSON');
 
-            broadcaster(Server.quake.latestQuake);
+            await broadcaster(Server.quake.latestQuake);
 
         }
 
-        if(Server.data.config.syncQuakeData !== 0) {
+        if(Server.data.config['sync-interval'] !== 0) {
 
-            await Sleep.sleep(Server.data.config.syncQuakeData);
+            await Sleep.sleep(Server.data.config['sync-interval']);
 
         }
     }
 
 }
+
+
 
 const runApp = async () => {
 
-    const api = Server.data.config.apiAuth;
+    const api = Server.data.config.platforms;
     
-    if(api.telegram !== '') {
-        
-        Server.telegram = {
+    if(api.telegram.isEnable === true) {
 
-            App: new Telegram(Server),
-            
-            data: {}
+        if(api.telegram !== '') {
         
+            Server.telegram = {
+    
+                App: new Telegram(Server),
+                
+                data: {}
+            
+            }
+    
+            await Server.telegram.App.run();
+    
+        } else {
+
+            Server.sendLogs('(Telegram) \x1b[91mERROR:\x1b[0m You must input a token if enable the Telegram platforms in config file'); 
+            Server.sendLogs('(Telegram): Platform Status \x1b[91mDisabled\x1b[0m');
+
+            api.telegram.isEnable = false;
+
         }
 
-        await Server.telegram.App.run();
+    } else {
+
+        Server.sendLogs('(Telegram): Platform Status \x1b[91mDisabled\x1b[0m');
 
     }
+    
+    if(api.twitter.isEnable === true) {
 
-    if(api.instagram.username !== '' && api.instagram.password !== '') {
+        if(api.twitter['api-key'] !== '' && api.twitter['api-secret'] !== '' && api.twitter['access-token'] !== '' && api.twitter['access-secret'] !== '') {
 
-        Server.instagram = {
-
-            App: new Instagram(Server),
+            Server.twitter = {
+    
+                App: new Twitter(Server),
+                
+                data: {}
             
-            data: {}
-        
+            }
+    
+        } else {
+
+            Server.sendLogs('(Twitter) \x1b[91mERROR:\x1b[0m You must input api-key, api-secret, access-token, and access-secret if enable the Twitter platforms in config file');
+            Server.sendLogs('(Twitter): Platform Status \x1b[91mDisabled\x1b[0m');
+
+            api.twitter.isEnable = false;
+
         }
 
-        await Server.instagram.App.run();
+    } else {
+
+        Server.sendLogs('(Twitter): Platform Status \x1b[91mDisabled\x1b[0m');
 
     }
+    
 
-    if(api.twitter.appKey !== '' && api.twitter.appSecret !== '' && api.twitter.accessToken !== '' && api.twitter.accessSecret !== '') {
+    if(api.instagram.isEnable === true) {
 
-        Server.twitter = {
-
-            App: new Twitter(Server),
-            
-            data: {}
+        if(api.instagram.username !== '' && api.instagram.password !== '') {
         
+            Server.instagram = {
+
+                App: new Instagram(Server),
+                
+                data: {}
+            
+            }
+    
+            await Server.instagram.App.run();
+        
+        } else {
+
+            Server.sendLogs('(Instagram) \x1b[91mERROR:\x1b[0m You must input username & password if enable the Telegram platforms in config file');
+            Server.sendLogs('(Instagram): Platform Status \x1b[91mDisabled\x1b[0m');
+
+            api.insagram.isEnable = false;
+
         }
+
+    } else {
+
+        Server.sendLogs('(Instagram): Platform Status \x1b[91mDisabled\x1b[0m');
 
     }
 
     return;
 }
+
+
 
 const broadcaster = async (latest) => {
 
-    Server.telegram.App.broadCastQuake(latest);
-    Server.instagram.App.broadCastQuake(latest);
-    Server.twitter.App.broadCastQuake(latest);
+    const api = Server.data.config.platforms;
+
+    if(api.telegram.isEnable) await Server.telegram.App.broadCastQuake(latest);
+    if(api.twitter.isEnable) await Server.twitter.App.broadCastQuake(latest);
+    if(api.instagram.isEnable) await Server.instagram.App.broadCastQuake(latest);
+    
 
     return;
 }
-
 
 
 main();

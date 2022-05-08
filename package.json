@@ -1,12 +1,14 @@
 {
-  "name": "gsseboom",
+  "name": "geeboom",
   "author": "Asadaaaaa",
   "version": "1.0.0",
   "description": "",
   "type": "module",
   "main": "src/Main.js",
   "scripts": {
-    "start": "nodemon --watch src"
+    "start": "npm i && cls && npx pm2 start ./src/Main.js --name \"Geboom\" && npx pm2 log --raw Geboom --lines 500",
+    "logs": "npx pm2 log --raw Geboom --lines 500",
+    "stop": "npx pm2 flush && npx pm2 delete Geboom && cls"
   },
   "keywords": [],
   "license": "ISC",
@@ -17,7 +19,7 @@
     "js-yaml": "^4.1.0",
     "mongodb": "^4.4.1",
     "node-fetch": "^3.2.3",
-    "nodemon": "^2.0.15",
+    "pm2": "^5.2.0",
     "telegraf": "^4.7.0",
     "tough-cookie-filestore2": "^1.0.0",
     "twitter-api-v2": "^1.12.0"

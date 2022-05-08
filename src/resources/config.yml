@@ -1,13 +1,23 @@
-apiAuth:
-  telegram: '' # Telegram bot token
-  twitter: # Twitter bot token
-    appKey: ''
-    appSecret: ''
-    accessToken: ''
-    accessSecret: ''
-  instagram: # Instagram account
+# Configuration
+
+quake-data:
+  api: 'https://data.bmkg.go.id/DataMKG/TEWS/autogempa.json' # BMKG API
+  sync-interval: 30 # in second, '0' for brute syncronize | 30 second for performance
+  error-logs: false # Logs when error fetching API
+
+platforms:
+  telegram:
+    isEnable: false
+    token: ''
+
+  twitter:
+    isEnable: false
+    api-key: ''
+    api-secret: ''
+    access-token: ''
+    access-secret: ''
+
+  instagram:
+    isEnable: false
     username: ''
     password: ''
-
-quakeDataAPI: 'https://data.bmkg.go.id/DataMKG/TEWS/autogempa.json'
-syncQuakeData: 30 #in second, '0' for brute syncronize | 30 second for performance

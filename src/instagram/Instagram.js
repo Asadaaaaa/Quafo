@@ -18,18 +18,20 @@ class Instagram {
         await this.loadData();
 
         let cookieStore = new FileCookieStore('./server_data/instagram_data/cookies.json');
-        let username = this.server.data.config.apiAuth.instagram.username;
-        let password = this.server.data.config.apiAuth.instagram.password;
+        let username = this.server.data.config.platforms.instagram.username;
+        let password = this.server.data.config.platforms.instagram.password;
 
         this.client = new instagram({username, password, cookieStore});
 
         await this.client.login().then(() => {
 
-            this.server.sendLogs('Instagram Automation started | Login as ' + username);
+            this.server.sendLogs('(Instagram): Platform Status \x1b[93mEnabled\x1b[0m | Login as ' + username);
 
         }).catch((err) => {
 
-            this.server.sendLogs('Instagram Login Error | ');
+            this.server.sendLogs('(Instagram) \x1b[91mERROR:\x1b[0m Platform Status \x1b[91mDisabled\x1b[0m');
+
+            this.server.data.config.platforms.instagram.isEnable = false;
 
         });
 
