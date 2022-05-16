@@ -8,7 +8,7 @@ import Telegram from './telegram/Telegram.js';
 import Instagram from './instagram/Instagram.js';
 import Twitter from './twitter/Twitter.js';
 
-import fetch from 'node-fetch';
+import axios from 'axios'
 
 
 let Server = {
@@ -62,7 +62,7 @@ const quakeDataUpdater = async () => {
 
         try{
 
-            respondBMKG_API = await fetch(Server.data.config['quake-data'].api);
+            respondBMKG_API = (await axios.get('https://data.bmkg.go.id/DataMKG/TEWS/autogempa.json')).data;
 
         } catch(err) {
 
@@ -73,7 +73,7 @@ const quakeDataUpdater = async () => {
             continue;
         }
         
-        let bmkgLatestQuake = (await respondBMKG_API.json()).Infogempa.gempa;
+        let bmkgLatestQuake = respondBMKG_API.Infogempa.gempa;
 
         if(JSON.stringify(Server.quake.latestQuake) !== JSON.stringify(bmkgLatestQuake)) {
 
