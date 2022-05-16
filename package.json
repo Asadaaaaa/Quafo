@@ -6,7 +6,8 @@
   "type": "module",
   "main": "src/Main.js",
   "scripts": {
-    "start": "npm i && cls && npx pm2 start ./src/Main.js --name \"Geboom\" && npx pm2 log --raw Geboom --lines 500",
+    "start": "npm i && cls && node .",
+    "release": "npm i && cls && npx pm2 start ./src/Main.js --name \"Geboom\" && npx pm2 log --raw Geboom --lines 500",
     "logs": "npx pm2 log --raw Geboom --lines 500",
     "stop": "npx pm2 flush && npx pm2 delete Geboom && cls"
   },
