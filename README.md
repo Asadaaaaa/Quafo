@@ -2,6 +2,8 @@
 	<img src="https://github.com/Asadaaaaa/Geboom/blob/main/Geboom.png?raw=true" alt="Your image url" width="200" height="200">
 </div>
 
+<br><br>
+
 <div align="center">
 	<p>
 		Geboom is an Indonesia earthquake warning automation program in livetime using official data from the BMKG.<br>
