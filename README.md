@@ -26,7 +26,7 @@
     <br>
     🔹 Discord (Coming Soon)
 
-<br>
+<br><br>
 
 <div align="center">
 	<h2>Information</h2>
